@@ -1,0 +1,97 @@
+import useFetchProduct from "../hook/useFetchProduct";
+import Card from "../card/card";
+import { Product } from "../../interfaces/Product";
+import productCss from "../../css/product.module.css"
+import { ChangeEvent, useContext, useEffect, useState } from "react";
+import Loading from "../loading";
+import useContextHook from "../hook/useProductContext";
+import { ProductType } from "../../context/productContext";
+import usenavbarContext from "../hook/useNavbarstatus";
+import { NavbarType } from "../../context/navBarContext";
+
+
+
+
+const Productf = () => {
+    const [product, loading] = useFetchProduct();
+    const [searchItem, setSearchItem] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const { savedproduct, setporduct } = useContextHook() as ProductType;
+    const { navbarActiveStatus } = usenavbarContext() as NavbarType;
+    const [navbarstatus, setNavbarStatus] = useState(false)
+
+    console.log("NavbarStatus :" + navbarstatus);
+
+
+    useEffect(() => {
+        // Update filteredProducts whenever the product data changes
+        setFilteredProducts(product as Product[]);
+    }, [product]);
+
+    useEffect(() => {
+        setNavbarStatus(navbarActiveStatus as boolean)
+    }, [navbarActiveStatus])
+
+    const searchItemProduct = (input: string) => {
+        setSearchItem(input);
+
+        const newFilteredProducts = (product as Product[]).filter((item) => {
+            return item.title.toLowerCase().includes(input.toLowerCase());
+        });
+
+
+        setFilteredProducts(newFilteredProducts);
+    }
+
+    const addProductTOCorb = (item: Product) => {
+        setporduct([...savedproduct, { id: item.id, images: item.images, descrption: item.descrption, title: item.title }])
+    }
+
+
+    return (
+        <>
+            {loading ?
+                <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
+                    <div className={productCss.input_container}>
+                        <input className={productCss.input}
+                            placeholder="Search"
+                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                searchItemProduct(e.target.value)
+                            }
+
+                        />
+                    </div>
+
+                    <div className={productCss.main_content}>
+
+                        {
+
+
+                            filteredProducts.map((item) => {
+                                console.log(item);
+
+                                return (
+                                    <>
+                                        <div className={productCss.card}>
+                                            <Card id={item.id} images={item.images} title={item.title} buttonTitle="Add" addProduct={() => {
+                                                addProductTOCorb(item)
+                                            }} />
+                                        </div>
+                                    </>
+                                )
+                            })
+
+                        }
+                    </div>
+                </div>
+                : <Loading />
+            }
+        </>
+    )
+
+
+
+
+}
+
+export default Productf;

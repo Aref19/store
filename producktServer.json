@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "title": "Laptop",
+        "image": "https://media.istockphoto.com/id/1182241805/photo/modern-laptop-with-empty-screen-on-white-background-mockup-design-copy-space-text.jpg?s=612x612&w=0&k=20&c=cFUF-381vXOFw_fgec6kB_2psIsvJE-JO5KNnbe5PSY="
+    },
+    {
+        "id": 2,
+        "title": "iphon",
+        "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072989055"
+    },
+    {
+        "id": 3,
+        "title": "wash machine ",
+        "image": "https://www.lg.com/ph/images/washing-machines/md07556668/gallery1/D-2.jpg"
+    },
+    {
+        "id": 4,
+        "title": "kuhlschrank",
+        "image": "https://res.cloudinary.com/chal-tec/image/upload/w_450,q_auto,f_auto,dpr_3.0/bbg/10035212/Gallery/10035212_yy_0001_titel___.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Laptop",
+        "image": "https://media.istockphoto.com/id/1182241805/photo/modern-laptop-with-empty-screen-on-white-background-mockup-design-copy-space-text.jpg?s=612x612&w=0&k=20&c=cFUF-381vXOFw_fgec6kB_2psIsvJE-JO5KNnbe5PSY="
+    },
+    {
+        "id": 6,
+        "title": "iphon",
+        "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072989055"
+    },
+
+    {
+        "id": 7,
+        "title": "Laptop",
+        "image": "https://media.istockphoto.com/id/1182241805/photo/modern-laptop-with-empty-screen-on-white-background-mockup-design-copy-space-text.jpg?s=612x612&w=0&k=20&c=cFUF-381vXOFw_fgec6kB_2psIsvJE-JO5KNnbe5PSY="
+    },
+    {
+        "id": 8,
+        "title": "iphon",
+        "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072989055"
+    },
+    {
+        "id": 9,
+        "title": "Laptop",
+        "image": "https://media.istockphoto.com/id/1182241805/photo/modern-laptop-with-empty-screen-on-white-background-mockup-design-copy-space-text.jpg?s=612x612&w=0&k=20&c=cFUF-381vXOFw_fgec6kB_2psIsvJE-JO5KNnbe5PSY="
+    },
+    {
+        "id": 10,
+        "title": "iphon",
+        "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072989055"
+    }
+]

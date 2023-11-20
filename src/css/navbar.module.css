@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 20%;
+    height: 100%;
+
+}
+
+.icon_container{
+  width: 100%;
+
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin: 10px 0 0 10px;
+    cursor: pointer;
+    position: fixed;
+}
+
+.p{
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    border-bottom: 1px solid;
+    transition:padding 0.5s;
+}
+
+.p:hover{
+  padding-bottom: 2px;
+}
+
+.navbar_contianer {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    width: 100%;
+    border: 1px solid;
+    box-shadow: 10px 10px 10px 5px lightblue;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+
+
+.navbar_contianer_hidden{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    width: 100%;
+    border: 1px solid;
+    box-shadow: 10px 10px 10px 5px lightblue;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
