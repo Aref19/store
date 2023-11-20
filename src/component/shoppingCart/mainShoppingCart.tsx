@@ -15,8 +15,11 @@ const MainShoppingCar = () => {
     const { savedproduct, setporduct } = useContextHook() as ProductType;
     const { navbarActiveStatus } = usenavbarContext() as NavbarType;
     const [navbarstatus, setNavbarStatus] = useState(false)
-    const [showPopup, setShowPopup] = useState(false)
+    const [showPopup, setShowpopup] = useState(false)
 
+    setTimeout(() => {
+        setShowpopup(false)
+    }, 2000)
 
     return (
         <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
@@ -31,12 +34,15 @@ const MainShoppingCar = () => {
 
                         return (
                             <>
+                                <Popup text="Remove" show={showPopup} />
                                 <div className={productCss.card}>
                                     <Card id={item.id} images={item.images} title={item.title} buttonTitle="Remove" addProduct={() => {
                                         setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })])
+                                        setShowpopup(true)
                                     }} />
 
                                 </div>
+
                             </>
                         )
                     })

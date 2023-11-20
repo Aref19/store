@@ -7,5 +7,6 @@ export interface Product {
 
 
 export interface PopupContent{
-   text:string
+   text:string,
+   show:Boolean
 }

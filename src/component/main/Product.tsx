@@ -20,13 +20,17 @@ const Productf = () => {
     const { savedproduct, setporduct } = useContextHook() as ProductType;
     const { navbarActiveStatus } = usenavbarContext() as NavbarType;
     const [navbarstatus, setNavbarStatus] = useState(false)
-    const [showPopup, setShowpopUp] = useState(false)
+    const [showPopup, setShowpopup] = useState(false)
+
 
     console.log("NavbarStatus :" + navbarstatus);
 
+    setTimeout(() => {
+        setShowpopup(false)
+    },2000)
 
     useEffect(() => {
-        // Update filteredProducts whenever the product data changes
+
         setFilteredProducts(product as Product[]);
     }, [product]);
 
@@ -76,7 +80,7 @@ const Productf = () => {
                                         <div className={productCss.card}>
                                             <Card id={item.id} images={item.images} title={item.title} buttonTitle="Add" addProduct={() => {
                                                 addProductTOCorb(item)
-                                                setShowpopUp(true)
+                                                setShowpopup(true)
                                             }} />
                                         </div>
                                     </>
@@ -85,7 +89,10 @@ const Productf = () => {
 
                         }
                     </div>
+                    <Popup text="Success Added" show={showPopup} />
                 </div>
+
+
                 : <Loading />
             }
         </>

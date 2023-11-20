@@ -5,8 +5,8 @@ import PopUpCss from "../css/Popup.module.css"
 
 
 
-const Popup = ({ text }: PopupContent) => {
-
+const Popup = ({ text, show }: PopupContent) => {
+    if (!show) return null
     return (
         <>
             <div className={PopUpCss.container}>
