@@ -6,6 +6,7 @@
     position: relative;
     right:10%;
     transition:right 1s ;
+    justify-content: space-between;
 }
 
 
@@ -13,8 +14,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    right: 0%;
-    transition:right 0.5s ;
+    position: relative;
+    right:0%;
+    transition:right 1s ;
+    justify-content: space-between;
 }
 
 
@@ -24,9 +27,10 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    position: relative;
-    left: 100px;
-
+    position: absolute;
+    top: 2px;
+    left: 60%;
+    background-color: red;
 }
 
 .input{
@@ -35,6 +39,8 @@
     border-radius: 50px;
     padding: 5px;
     padding-left: 10px;
+    position: absolute;
+    top: 10px;
     
 }
 
@@ -42,8 +48,11 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
+  min-height: 80%;
   position: relative;
   left: 200px;
+  margin-top: 10px;
 }
 
 .card{

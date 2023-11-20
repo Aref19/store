@@ -4,3 +4,8 @@ export interface Product {
     title: string,
     descrption:string
 }
+
+
+export interface PopupContent{
+   text:string
+}

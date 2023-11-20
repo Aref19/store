@@ -8,6 +8,7 @@ import useContextHook from "../hook/useProductContext";
 import { ProductType } from "../../context/productContext";
 import usenavbarContext from "../hook/useNavbarstatus";
 import { NavbarType } from "../../context/navBarContext";
+import Popup from "../Popup";
 
 
 
@@ -19,6 +20,7 @@ const Productf = () => {
     const { savedproduct, setporduct } = useContextHook() as ProductType;
     const { navbarActiveStatus } = usenavbarContext() as NavbarType;
     const [navbarstatus, setNavbarStatus] = useState(false)
+    const [showPopup, setShowpopUp] = useState(false)
 
     console.log("NavbarStatus :" + navbarstatus);
 
@@ -50,23 +52,22 @@ const Productf = () => {
 
     return (
         <>
+
+            <div className={productCss.input_container}>
+                <input className={productCss.input}
+                    placeholder="Search"
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        searchItemProduct(e.target.value)
+                    }
+
+                />
+            </div>
             {loading ?
+
                 <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
-                    <div className={productCss.input_container}>
-                        <input className={productCss.input}
-                            placeholder="Search"
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                searchItemProduct(e.target.value)
-                            }
-
-                        />
-                    </div>
-
                     <div className={productCss.main_content}>
 
                         {
-
-
                             filteredProducts.map((item) => {
                                 console.log(item);
 
@@ -75,6 +76,7 @@ const Productf = () => {
                                         <div className={productCss.card}>
                                             <Card id={item.id} images={item.images} title={item.title} buttonTitle="Add" addProduct={() => {
                                                 addProductTOCorb(item)
+                                                setShowpopUp(true)
                                             }} />
                                         </div>
                                     </>
