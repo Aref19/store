@@ -14,17 +14,16 @@ interface cardProduct {
 
 const Card = ({ images, title, addProduct, buttonTitle }: cardProduct) => {
 
-    const cardStyle = {
-        display: "flex",
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    };
+  
 
     return (
         <>
-            <div style={cardStyle}>
+            <div style={{
+                display: "flex",
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
                 <img className={cardCss.img} src={images[0]} />
                 <h1 className={cardCss.p}>{title}</h1>
                 <button className={cardCss.button} onClick={addProduct}>{buttonTitle}</button>

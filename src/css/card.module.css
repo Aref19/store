@@ -22,13 +22,3 @@
     height: 50px;
     cursor: pointer;
 }
-
-.card_container{
-    display: "flex";
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-
