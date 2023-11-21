@@ -1,4 +1,4 @@
-import { NavbarType, initialNavbarContext } from "../../context/navBarContext"
+import { initialNavbarContext } from "../../context/navBarContext"
 import { useContext } from 'react';
 
 

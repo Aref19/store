@@ -33,9 +33,9 @@ const MainShoppingCar = () => {
 
                         return (
                             <>
-                                <Popup text="Remove" show={showPopup} />
+                                <Popup text="Removed" show={showPopup} />
                                 <div className={productCss.card}>
-                                    <Card id={item.id} images={item.images} title={item.title} buttonTitle="Removed" addProduct={() => {
+                                    <Card id={item.id} images={item.images} title={item.title} buttonTitle="Remove" addProduct={() => {
                                         setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })])
                                         setShowpopup(true)
                                     }} />
