@@ -1,4 +1,3 @@
-import { Product } from "../../interfaces/Product";
 import cardCss from "../../css/card.module.css"
 
 interface cardProduct {
@@ -13,7 +12,7 @@ interface cardProduct {
 
 
 
-const Card = ({ images, title, addProduct ,buttonTitle}: cardProduct) => {
+const Card = ({ images, title, addProduct, buttonTitle }: cardProduct) => {
 
     const cardStyle = {
         display: "flex",
@@ -22,10 +21,6 @@ const Card = ({ images, title, addProduct ,buttonTitle}: cardProduct) => {
         alignItems: 'center',
 
     };
-
-
-
-
 
     return (
         <>

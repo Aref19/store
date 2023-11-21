@@ -1,11 +1,8 @@
 import { ProductType } from "../../context/productContext";
 import Card from "../card/card"
 import useContextHook from "../hook/useProductContext";
-
 import productCss from "../../css/product.module.css"
-import usenavbarContext from "../hook/useNavbarstatus";
-import { NavbarType } from "../../context/navBarContext";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Popup from "../Popup";
 
 
@@ -13,13 +10,15 @@ import Popup from "../Popup";
 
 const MainShoppingCar = () => {
     const { savedproduct, setporduct } = useContextHook() as ProductType;
-    const { navbarActiveStatus } = usenavbarContext() as NavbarType;
-    const [navbarstatus, setNavbarStatus] = useState(false)
+    const [navbarstatus] = useState(false)
     const [showPopup, setShowpopup] = useState(false)
 
-    setTimeout(() => {
-        setShowpopup(false)
-    }, 2000)
+    useMemo(() => {
+        setTimeout(() => {
+            setShowpopup(false)
+        }, 2000)
+    }, [showPopup])
+
 
     return (
         <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
@@ -36,7 +35,7 @@ const MainShoppingCar = () => {
                             <>
                                 <Popup text="Remove" show={showPopup} />
                                 <div className={productCss.card}>
-                                    <Card id={item.id} images={item.images} title={item.title} buttonTitle="Remove" addProduct={() => {
+                                    <Card id={item.id} images={item.images} title={item.title} buttonTitle="Removed" addProduct={() => {
                                         setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })])
                                         setShowpopup(true)
                                     }} />

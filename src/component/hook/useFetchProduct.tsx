@@ -20,7 +20,7 @@ const useFetchProduct = () => {
                 const response = await instAxio.get("/products");
                 const data = response.data;
                 console.log(response.data);
-                
+
                 setProduct(data);
             } catch (error) {
                 setLoading(false);

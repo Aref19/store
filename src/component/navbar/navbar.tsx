@@ -8,14 +8,12 @@ import { NavbarType } from "../../context/navBarContext";
 const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const {setNavbarStatus } = usenavbarContext() as NavbarType;
+    const { setNavbarStatus } = usenavbarContext() as NavbarType;
 
     const openNav = () => {
         setIsOpen(!isOpen);
         setNavbarStatus(isOpen)
     }
-
-
 
     return (
         <>

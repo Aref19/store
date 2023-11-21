@@ -2,7 +2,7 @@ import useFetchProduct from "../hook/useFetchProduct";
 import Card from "../card/card";
 import { Product } from "../../interfaces/Product";
 import productCss from "../../css/product.module.css"
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import Loading from "../loading";
 import useContextHook from "../hook/useProductContext";
 import { ProductType } from "../../context/productContext";
@@ -15,7 +15,6 @@ import Popup from "../Popup";
 
 const Productf = () => {
     const [product, loading] = useFetchProduct();
-    const [searchItem, setSearchItem] = useState("");
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const { savedproduct, setporduct } = useContextHook() as ProductType;
     const { navbarActiveStatus } = usenavbarContext() as NavbarType;
@@ -23,11 +22,12 @@ const Productf = () => {
     const [showPopup, setShowpopup] = useState(false)
 
 
-    console.log("NavbarStatus :" + navbarstatus);
 
-    setTimeout(() => {
-        setShowpopup(false)
-    },2000)
+    useMemo(() => {
+        setTimeout(() => {
+            setShowpopup(false)
+        }, 2000)
+    }, [showPopup])
 
     useEffect(() => {
 
@@ -39,7 +39,7 @@ const Productf = () => {
     }, [navbarActiveStatus])
 
     const searchItemProduct = (input: string) => {
-        setSearchItem(input);
+
 
         const newFilteredProducts = (product as Product[]).filter((item) => {
             return item.title.toLowerCase().includes(input.toLowerCase());
