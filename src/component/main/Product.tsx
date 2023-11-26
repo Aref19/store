@@ -2,10 +2,10 @@ import useFetchProduct from "../hooks/useFetchProduct";
 import Card from "../card/card";
 import { Product } from "../../interfaces/Product";
 import productCss from "../../css/product.module.css"
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import Loading from "../loading";
 import useContextHook from "../hooks/useProductContext";
-import { ProductType } from "../../context/productContext";
+import { ProductType, SORT_BY_NAME, SORT_BY_PRICE } from "../../context/productContext";
 import Popup from "../Popup";
 
 
@@ -14,9 +14,10 @@ import Popup from "../Popup";
 const Productf = () => {
     const [product, loading] = useFetchProduct();
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-    const { savedproduct, setporduct } = useContextHook() as ProductType;
+    const { savedproduct, setporduct, dispatch, initializer } = useContextHook() as ProductType;
     const [showPopup, setShowpopup] = useState(false)
-
+    const selector = useRef<HTMLDivElement | null>(null)
+    let showSelector: boolean = false
 
     let i = 0;
     useMemo(() => {
@@ -31,6 +32,10 @@ const Productf = () => {
         console.log(product);
 
     }, [product]);
+
+    useEffect(() => {
+        setFilteredProducts(initializer)
+    }, [initializer])
 
 
 
@@ -57,6 +62,21 @@ const Productf = () => {
         setporduct([...savedproduct, { id: item.id, image: item.image, descrption: item.descrption, title: item.title, price: item.price }])
     }
 
+    const showSort = () => {
+        showSelector = !showSelector
+        selector.current!.style.display = showSelector ? "block" : "none"
+    }
+
+    const sortByPrice = () => {
+        dispatch({ type: SORT_BY_PRICE, payload: filteredProducts })
+        
+    }
+
+    const sortByName = () => {
+        dispatch({ type: SORT_BY_NAME, payload: filteredProducts })
+
+
+    }
 
     return (
         <>
@@ -72,7 +92,16 @@ const Productf = () => {
                     />
                 </div>
                 <div className={productCss.sort_container}>
-                    <h1>das</h1>
+                    <button className={productCss.sort_button} onClick={showSort} >
+                        <span > Sort by </span>
+
+                    </button>
+
+                    <div className={productCss.form} ref={selector}  >
+                        <p className={productCss.select_p} onClick={sortByPrice}>Price</p>
+                        <p className={productCss.select_p} onClick={sortByName}>name</p>
+                    </div>
+
                 </div>
             </div>
             {loading ?

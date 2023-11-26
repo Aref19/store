@@ -41,19 +41,20 @@
 
 }
 
-
 .card:hover {
     margin-top: 5px;
     box-shadow: 10px 10px 10px 5px lightblue;
 }
 
 .sort_container {
-   
-    width: 50%;
+    width: 20%;
     display: flex;
     margin: 0 auto;
-    justify-content: center;    
-
+    justify-content: center; 
+    flex-direction: column; 
+    position: relative;
+    top: 5px;
+  
 }
 
 .input_container {
@@ -62,4 +63,24 @@
     width: 50%;
     margin: 0 auto;
     justify-content: center;
+  
+}
+
+.sort_button{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.form{
+    display: none;
+    background-color: darkgrey; 
+}
+
+.select_p{
+    transition:background-color 0.5s;
+}
+
+.select_p:hover{
+    cursor: pointer;
+    background-color: white;
 }

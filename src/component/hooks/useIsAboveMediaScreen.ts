@@ -5,15 +5,14 @@ import { useEffect, useState } from "react"
 
 const useIsAboveMediaScreen = () => {
 
-    const [sizeScreen, setSizeScreen] = useState<boolean>();
+    const [sizeScreen, setSizeScreen] = useState<boolean>(false);
 
 
     useEffect(() => {
 
         const checkSize = () => {
             const size = window.innerWidth
-
-
+            
             if (size < 600) {
                 setSizeScreen(true)
             } else {
