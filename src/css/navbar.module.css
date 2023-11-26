@@ -92,3 +92,20 @@
     flex-direction: column;
     align-items: center;
 }
+
+.container_navbar_mobile{
+    display: flex;
+    display: none;
+    flex-direction: column;
+}
+
+.container_navbar_mobile_open{
+    display: flex;
+    flex-direction: column;
+}
+
+.container_nav_mobile{
+  display: flex;
+  justify-content: right;
+    
+}
