@@ -1,73 +1,65 @@
-
-.container{
+.container {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_sort_container {
+    display: flex;
+    margin-top: 10px;
+  
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    right:10%;
-    transition:right 1s ;
-    justify-content: space-between;
 }
 
-
-.containernavBar{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    right:0%;
-    transition:right 1s ;
-    justify-content: space-between;
-}
-
-
-
-
-.input_container{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 2px;
-    left: 60%;
-    background-color: red;
-}
-
-.input{
+.input {
     max-width: 200px;
     border-bottom: 2px solid;
     border-radius: 50px;
     padding: 5px;
     padding-left: 10px;
-    position: absolute;
-    top: 10px;
-    
+
 }
 
-.main_content{
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
-  min-height: 80%;
-  position: relative;
-  left: 200px;
-  margin-top: 10px;
+.main_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
-.card{
+.card {
     margin: 10px;
     transition: margin 1s;
     width: 400px;
-    height: 400px;
+    height: 450px;
     border: 1px solid black;
     box-shadow: 5px 5px 5px 5px lightblue;
     border-radius: 20px;
-    
 
 }
-.card:hover{
+
+
+.card:hover {
     margin-top: 5px;
     box-shadow: 10px 10px 10px 5px lightblue;
 }
 
+.sort_container {
+   
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;    
+
+}
+
+.input_container {
+ 
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: center;
+}

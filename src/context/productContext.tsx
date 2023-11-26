@@ -18,7 +18,7 @@ export const initialContext = createContext<ProductType | null>(null)
 
 
 
-export const ProductProvider  = ({ children }: { children: JSX.Element }) => {
+export const ProductProvider = ({ children }: { children: JSX.Element }) => {
     const [product, setProduct] = useState<Product[]>(instialProduct);
 
     return (
@@ -26,5 +26,6 @@ export const ProductProvider  = ({ children }: { children: JSX.Element }) => {
             {children}
         </initialContext.Provider>
     )
+
 
 }

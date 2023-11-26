@@ -1,65 +1,94 @@
 .container {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 20%;
-    height: 100%;
+    width: 100%;
+    height: 60%;
+    background-color: beige;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ul li {
+    margin: 10px;
+}
+
+.img {
+    width: 25px;
+    height: 25px;
+}
+
+.h1 {
+
+    align-items: center;
+}
+
+.h1:hover {
+    color: red;
+}
+
+.container_title {
+
+
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    width: 10%;
+
 
 }
 
-.icon_container{
-  width: 100%;
-
+.container_menu {
+    width: 90%;
+    height: 20%;
+    background-color: white;
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
-    margin: 10px 0 0 10px;
-    cursor: pointer;
-    position: fixed;
-}
-
-.p{
-    cursor: pointer;
-    text-align: center;
-    color: black;
+.container_menu_title {
+    box-shadow: 10px 5px 5px black;
+    display: flex;
+    width: 100%;
+    height: 20%;
     border-bottom: 1px solid;
-    transition:padding 0.5s;
+    background-color: white;
 }
 
-.p:hover{
-  padding-bottom: 2px;
-}
-
-.navbar_contianer {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    background-color: aliceblue;
+.background_image {
     width: 100%;
-    border: 1px solid;
-    box-shadow: 10px 10px 10px 5px lightblue;
-    height: 100%;
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0.5s, opacity 0.5s linear;
+    height: 20%;
 }
 
-
-
-.navbar_contianer_hidden{
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    background-color: aliceblue;
+.image_text_container {
     width: 100%;
-    border: 1px solid;
-    box-shadow: 10px 10px 10px 5px lightblue;
     height: 100%;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.5s, opacity 0.5s linear;
+    display: flex;
+    justify-content: space-around;
+}
+
+.conatiner_image {
+    display: flex;
+    align-items: center;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+.container_text {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

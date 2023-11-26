@@ -1,20 +1,29 @@
+import { useEffect } from "react"
 import cardCss from "../../css/card.module.css"
+import useIsAboveMediaScreen from "../hooks/useIsAboveMediaScreen"
 
 interface cardProduct {
     id: number
-    images: string[],
+    images: string,
     title: string,
     addProduct: () => void,
-    buttonTitle: string
+    buttonTitle: string,
+    price: string
 }
 
 
 
 
 
-const Card = ({ images, title, addProduct, buttonTitle }: cardProduct) => {
+const Card = ({ images, title, price, addProduct, buttonTitle }: cardProduct) => {
 
-  
+    const { sizeScreen } = useIsAboveMediaScreen();
+
+
+
+
+
+
 
     return (
         <>
@@ -24,8 +33,9 @@ const Card = ({ images, title, addProduct, buttonTitle }: cardProduct) => {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
-                <img className={cardCss.img} src={images[0]} />
+                <img className={cardCss.img} src={images} />
                 <h1 className={cardCss.p}>{title}</h1>
+                <p >{price}$</p>
                 <button className={cardCss.button} onClick={addProduct}>{buttonTitle}</button>
             </div>
         </>

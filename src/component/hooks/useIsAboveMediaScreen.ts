@@ -1,0 +1,39 @@
+import { useEffect, useState } from "react"
+
+
+
+
+const useIsAboveMediaScreen = () => {
+
+    const [sizeScreen, setSizeScreen] = useState<boolean>();
+
+
+    useEffect(() => {
+
+        const checkSize = () => {
+            const size = window.innerWidth
+
+
+            if (size < 600) {
+                setSizeScreen(true)
+            } else {
+                setSizeScreen(false)
+            }
+
+        }
+
+
+        window.addEventListener("resize", checkSize)
+        //console.log(sizeScreen);
+        return () => {
+                
+            window.removeEventListener('resize', checkSize);
+        };
+
+    }, [])
+
+    return { sizeScreen }
+
+}
+
+export default useIsAboveMediaScreen;

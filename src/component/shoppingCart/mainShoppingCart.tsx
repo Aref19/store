@@ -1,6 +1,6 @@
 import { ProductType } from "../../context/productContext";
 import Card from "../card/card"
-import useContextHook from "../hook/useProductContext";
+import useContextHook from "../hooks/useProductContext";
 import productCss from "../../css/product.module.css"
 import { useMemo, useState } from "react";
 import Popup from "../Popup";
@@ -26,8 +26,6 @@ const MainShoppingCar = () => {
             <div className={productCss.main_content}>
 
                 {
-
-
                     savedproduct.map((item) => {
                         console.log(item);
 
@@ -35,7 +33,7 @@ const MainShoppingCar = () => {
                             <>
                                 <Popup text="Removed" show={showPopup} />
                                 <div className={productCss.card}>
-                                    <Card id={item.id} images={item.images} title={item.title} buttonTitle="Remove" addProduct={() => {
+                                    <Card id={item.id} images={item.image} title={item.title} buttonTitle="Remove" price={item.price} addProduct={() => {
                                         setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })])
                                         setShowpopup(true)
                                     }} />
@@ -45,7 +43,6 @@ const MainShoppingCar = () => {
                             </>
                         )
                     })
-
                 }
             </div>
         </div>
