@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 const useIsAboveMediaScreen = () => {
 
-    const [sizeScreen, setSizeScreen] = useState<boolean>(true);
+    const [sizeScreen, setSizeScreen] = useState<boolean>(false);
 
 
     useEffect(() => {
