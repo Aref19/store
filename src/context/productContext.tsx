@@ -1,4 +1,4 @@
-import { Dispatch, Reducer, ReducerWithoutAction, SetStateAction, createContext, useReducer, useState } from "react";
+import { Dispatch, Reducer, SetStateAction, createContext, useReducer, useState } from "react";
 import { Product } from "../interfaces/Product";
 
 export const SORT_BY_PRICE = "sort_by_price";

@@ -13,7 +13,7 @@ import navbarCss from '../../css/sidebar.module.css'
 
 const Navbar = () => {
     const [card, setInCard] = useState<boolean>(false);
-    const { savedproduct, setporduct } = useContextHook() as ProductType;
+    const { savedproduct } = useContextHook() as ProductType;
     const { sizeScreen } = useIsAboveMediaScreen()
     const [openNavbar, setIsOpen] = useState(false);
 
@@ -37,18 +37,20 @@ const Navbar = () => {
                 <>
                     <div className={navCss.container_nav_mobile}>
                         <img className={navbarCss.icon} src={iconList} onClick={() => setIsOpen(!openNavbar)} />
-                        <div className={openNavbar ? navCss.container_navbar_mobile : navCss.container_navbar_mobile_open}>
-                            <ul>
-                                <li>
-                                    <Link to={"/"} style={{ textDecoration: "none" }} ><h1 className={navCss.h1}>Home</h1></Link>
-                                </li>
-                                <li>
-                                    <Link to={"/WarenKorp"} style={{ textDecoration: "none" }}><img className={navCss.img} src={card ? shoping_cart : empty_shoping_card} /></Link>
-                                </li>
-                                <li>
-                                    <Link to={"Profile"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>About</h1></Link>
-                                </li>
-                            </ul>
+                        <div className={navCss.container_ul_mobile}>
+                            <div className={openNavbar ? navCss.container_navbar_mobile : navCss.container_navbar_mobile_open}>
+                                <ul className={navCss.ul_mobile}>
+                                    <li>
+                                        <Link to={"/"} style={{ textDecoration: "none" }} ><h1 className={navCss.h1}>Home</h1></Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/WarenKorp"} style={{ textDecoration: "none" }}><img className={navCss.img} src={card ? shoping_cart : empty_shoping_card} /></Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"Profile"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>About</h1></Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </>

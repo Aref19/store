@@ -1,6 +1,6 @@
-import { useEffect } from "react"
+
 import cardCss from "../../css/card.module.css"
-import useIsAboveMediaScreen from "../hooks/useIsAboveMediaScreen"
+
 
 interface cardProduct {
     id: number
@@ -17,7 +17,6 @@ interface cardProduct {
 
 const Card = ({ images, title, price, addProduct, buttonTitle }: cardProduct) => {
 
-    const { sizeScreen } = useIsAboveMediaScreen();
 
 
 

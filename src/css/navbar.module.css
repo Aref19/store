@@ -107,5 +107,22 @@
 .container_nav_mobile{
   display: flex;
   justify-content: right;
+
     
+}
+
+.ul_mobile {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    width: 200px;
+  
+}
+
+.container_ul_mobile{
+    width: 100%;
+   
+    display: flex;
+    justify-content: center;
 }
