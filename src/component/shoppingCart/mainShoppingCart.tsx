@@ -1,6 +1,6 @@
 import { ProductType } from "../../context/productContext";
 import Card from "../card/card"
-import useContextHook from "../hooks/useProductContext";
+import useContextHook from "../../hooks/useProductContext";
 import productCss from "../../css/product.module.css"
 import { useMemo, useState } from "react";
 import Popup from "../Popup";

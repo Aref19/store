@@ -20,8 +20,6 @@ const useIsAboveMediaScreen = () => {
             }
 
         }
-
-
         window.addEventListener("resize", checkSize)
         //console.log(sizeScreen);
         return () => {

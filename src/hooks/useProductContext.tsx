@@ -1,4 +1,4 @@
-import { initialContext } from "../../context/productContext"
+import { initialContext } from "../context/productContext"
 import { useContext } from 'react';
 
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { instAxio } from "../../api/mainApi";
+import { instAxio } from "../api/mainApi";
 
 
 

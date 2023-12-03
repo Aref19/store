@@ -1,23 +1,36 @@
-import useFetchProduct from "../hooks/useFetchProduct";
+import useFetchProduct from "../../hooks/useFetchProduct";
 import Card from "../card/card";
 import { Product } from "../../interfaces/Product";
 import productCss from "../../css/product.module.css"
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import Loading from "../loading";
-import useContextHook from "../hooks/useProductContext";
+import useContextHook from "../../hooks/useProductContext";
 import { ProductType, SORT_BY_NAME, SORT_BY_PRICE } from "../../context/productContext";
 import Popup from "../Popup";
+import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
+import { add, fetchProducts } from "../../redux_toolkit/slices";
+
 
 
 
 
 const Productf = () => {
-    const [product, loading] = useFetchProduct();
+    const [loading] = useFetchProduct();
+    const product = useAppSelector((state) => state.product)
+    console.log("product :" + product);
+
+    const dispatchred = useAppDispatch();
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const { savedproduct, setporduct, dispatch, initializer } = useContextHook() as ProductType;
     const [showPopup, setShowpopup] = useState(false)
     const selector = useRef<HTMLDivElement | null>(null)
-    let showSelector: boolean = false
+    let showSelector: boolean = false;
+    const testReducx: Product[] = useAppSelector(state => state.product);
+    const dispatchrducx = useAppDispatch();
+
+    useEffect(() => {
+        dispatchred(fetchProducts());
+    }, [])
 
     let i = 0;
     useMemo(() => {
@@ -27,7 +40,6 @@ const Productf = () => {
     }, [showPopup])
 
     useEffect(() => {
-
         setFilteredProducts(product as Product[]);
         console.log(product);
 
@@ -37,17 +49,17 @@ const Productf = () => {
         setFilteredProducts(initializer)
     }, [initializer])
 
+    useEffect(() => {
+        console.log("redux", testReducx);
+    }, [testReducx])
+
 
 
     const searchItemProduct = (input: string) => {
 
 
         const newFilteredProducts = (product as Product[]).filter((item) => {
-
-
             return item.title.toLowerCase().includes(input.toLowerCase());
-
-
         });
 
         if (newFilteredProducts.length > 0) {
@@ -60,6 +72,7 @@ const Productf = () => {
 
     const addProductTOCorb = (item: Product) => {
         setporduct([...savedproduct, { id: item.id, image: item.image, descrption: item.descrption, title: item.title, price: item.price }])
+        dispatchrducx(add({ id: 2, descrption: "test1", image: "hhtps://1", price: "3001", title: "test1" }))
     }
 
     const showSort = () => {
@@ -69,7 +82,7 @@ const Productf = () => {
 
     const sortByPrice = () => {
         dispatch({ type: SORT_BY_PRICE, payload: filteredProducts })
-        
+
     }
 
     const sortByName = () => {

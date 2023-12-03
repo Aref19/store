@@ -3,11 +3,11 @@ import empty_shoping_card from "../../assets/shopping-cart-empty.png"
 import navCss from "../../css/navbar.module.css"
 import womenImage from "../../assets/online-shopping.png"
 import { useEffect, useState } from "react"
-import useContextHook from "../hooks/useProductContext"
+import useContextHook from "../../hooks/useProductContext"
 import { ProductType } from "../../context/productContext"
 import shoping_cart from "../../assets/shopping-cart.png"
 import { Link } from "react-router-dom";
-import useIsAboveMediaScreen from "../hooks/useIsAboveMediaScreen"
+import useIsAboveMediaScreen from "../../hooks/useIsAboveMediaScreen"
 import iconList from '../../assets/list.png'
 import navbarCss from '../../css/sidebar.module.css'
 
