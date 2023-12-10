@@ -1,12 +1,16 @@
 import { PopupContent } from "../interfaces/Product"
 import PopUpCss from "../css/Popup.module.css"
+import { memo } from "react"
 
 
 
 
 
 const Popup = ({ text, show }: PopupContent) => {
+    
     if (!show) return null
+    
+
     return (
         <>
             <div className={PopUpCss.container}>
@@ -16,4 +20,4 @@ const Popup = ({ text, show }: PopupContent) => {
     )
 }
 
-export default Popup;
+export default memo(Popup);

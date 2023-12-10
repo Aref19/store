@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Product } from '../interfaces/Product'
 import { instAxio } from "../api/mainApi"
-
+import { combineReducers } from '@reduxjs/toolkit';
 
 
 let state: Product[] = []
@@ -17,7 +17,7 @@ export const fetchProducts = createAsyncThunk("products/fetchProducts", async ()
 })
 
 
-export const counterSlice = createSlice({
+export const producktSlice = createSlice({
     name: "products",
     initialState: state,
     reducers: {
@@ -33,5 +33,25 @@ export const counterSlice = createSlice({
     }
 })
 
-export const { add } = counterSlice.actions
-export default counterSlice.reducer
+export const cartSlice = createSlice({
+    name: "products",
+    initialState: state,
+    reducers: {
+        addToCard: (state, action) => {
+            return [...state, { ...action.payload }]
+        },
+        deleteFromCard: (state, action) => {
+            return [...state.filter((item) => item.id != (action.payload as Product).id)]
+        }
+    }
+
+})
+export const { addToCard, deleteFromCard } = cartSlice.actions
+
+
+export const { add } = producktSlice.actions
+export default producktSlice.reducer
+
+
+
+

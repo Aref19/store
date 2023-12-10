@@ -2,6 +2,7 @@
 import cardCss from "../../css/card.module.css"
 
 
+
 interface cardProduct {
     id: number
     images: string,

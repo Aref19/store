@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainShoppingCar from './component/shoppingCart/mainShoppingCart';
 import Navbar from './component/navbar/navbar';
 import { useState } from 'react';
+import Favority from './component/Favority';
 
 
 function App() {
@@ -20,10 +21,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <SideBar setIsOpen={changeStatusOfSidebar} isOpen={navbarstatus} />
+      {/* <SideBar setIsOpen={changeStatusOfSidebar} isOpen={navbarstatus} /> */}
       <Routes>
         <Route path="/" element={<Productf />} />
         <Route path="/WarenKorp" element={<MainShoppingCar />} />
+        <Route path="/Favority" element={<Favority />} />
       </Routes>
     </>
 

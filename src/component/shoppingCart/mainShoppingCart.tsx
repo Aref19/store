@@ -2,7 +2,7 @@ import { ProductType } from "../../context/productContext";
 import Card from "../card/card"
 import useContextHook from "../../hooks/useProductContext";
 import productCss from "../../css/product.module.css"
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Popup from "../Popup";
 
 
@@ -13,12 +13,16 @@ const MainShoppingCar = () => {
     const [navbarstatus] = useState(false)
     const [showPopup, setShowpopup] = useState(false)
 
-    useMemo(() => {
-        setTimeout(() => {
-            setShowpopup(false)
-        }, 2000)
-    }, [showPopup])
 
+    useEffect(() => {
+        const removeDialog = setTimeout(() => {
+            setShowpopup(true)
+        }, 2000)
+            
+        return () => {
+            clearTimeout(removeDialog)
+        }
+    }, [showPopup]);
 
     return (
         <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
@@ -34,8 +38,8 @@ const MainShoppingCar = () => {
                                 <Popup text="Removed" show={showPopup} />
                                 <div className={productCss.card}>
                                     <Card id={item.id} images={item.image} title={item.title} buttonTitle="Remove" price={item.price} addProduct={() => {
-                                        setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })])
-                                        setShowpopup(true)
+                                        setShowpopup(true);
+                                        setporduct([...savedproduct.filter((ite) => { return ite.id !== item.id })]);
                                     }} />
 
                                 </div>

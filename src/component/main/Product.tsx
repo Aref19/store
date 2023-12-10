@@ -2,7 +2,7 @@ import useFetchProduct from "../../hooks/useFetchProduct";
 import Card from "../card/card";
 import { Product } from "../../interfaces/Product";
 import productCss from "../../css/product.module.css"
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Loading from "../loading";
 import useContextHook from "../../hooks/useProductContext";
 import { ProductType, SORT_BY_NAME, SORT_BY_PRICE } from "../../context/productContext";
@@ -15,48 +15,42 @@ import { add, fetchProducts } from "../../redux_toolkit/slices";
 
 
 const Productf = () => {
+
     const [loading] = useFetchProduct();
     const product = useAppSelector((state) => state.product)
-    console.log("product :" + product);
-
     const dispatchred = useAppDispatch();
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const { savedproduct, setporduct, dispatch, initializer } = useContextHook() as ProductType;
     const [showPopup, setShowpopup] = useState(false)
     const selector = useRef<HTMLDivElement | null>(null)
     let showSelector: boolean = false;
-    const testReducx: Product[] = useAppSelector(state => state.product);
     const dispatchrducx = useAppDispatch();
 
     useEffect(() => {
         dispatchred(fetchProducts());
+
     }, [])
 
-    let i = 0;
-    useMemo(() => {
-        setTimeout(() => {
+
+    useEffect(() => {
+        const removeDialog = setTimeout(() => {
             setShowpopup(false)
         }, 2000)
+
+        return () => {
+            clearTimeout(removeDialog)
+        }
     }, [showPopup])
 
     useEffect(() => {
         setFilteredProducts(product as Product[]);
-        console.log(product);
-
     }, [product]);
 
     useEffect(() => {
         setFilteredProducts(initializer)
     }, [initializer])
 
-    useEffect(() => {
-        console.log("redux", testReducx);
-    }, [testReducx])
-
-
-
     const searchItemProduct = (input: string) => {
-
 
         const newFilteredProducts = (product as Product[]).filter((item) => {
             return item.title.toLowerCase().includes(input.toLowerCase());
@@ -67,7 +61,6 @@ const Productf = () => {
         } else {
             setFilteredProducts(filteredProducts);
         }
-
     }
 
     const addProductTOCorb = (item: Product) => {
@@ -82,13 +75,12 @@ const Productf = () => {
 
     const sortByPrice = () => {
         dispatch({ type: SORT_BY_PRICE, payload: filteredProducts })
-
+        showSort();
     }
 
     const sortByName = () => {
         dispatch({ type: SORT_BY_NAME, payload: filteredProducts })
-
-
+        showSort();
     }
 
     return (
@@ -126,7 +118,6 @@ const Productf = () => {
                         {
                             filteredProducts.map((item) => {
                                 console.log(item);
-                                console.log("nummber " + i++);
 
                                 return (
                                     <>
@@ -134,7 +125,6 @@ const Productf = () => {
                                             <Card id={item.id} images={item.image} title={item.title} buttonTitle="Add" price={item.price} addProduct={() => {
                                                 addProductTOCorb(item)
                                                 setShowpopup(true)
-
                                             }} />
                                         </div>
                                     </>
@@ -145,16 +135,10 @@ const Productf = () => {
                     </div>
                     <Popup text="Success Added" show={showPopup} />
                 </div>
-
-
-
                 : <Loading />
             }
         </>
     )
-
-
-
 
 }
 

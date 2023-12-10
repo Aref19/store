@@ -2,7 +2,7 @@
 import empty_shoping_card from "../../assets/shopping-cart-empty.png"
 import navCss from "../../css/navbar.module.css"
 import womenImage from "../../assets/online-shopping.png"
-import { useEffect, useState } from "react"
+import { useEffect, useState, memo, useMemo } from "react"
 import useContextHook from "../../hooks/useProductContext"
 import { ProductType } from "../../context/productContext"
 import shoping_cart from "../../assets/shopping-cart.png"
@@ -16,19 +16,21 @@ const Navbar = () => {
     const { savedproduct } = useContextHook() as ProductType;
     const { sizeScreen } = useIsAboveMediaScreen()
     const [openNavbar, setIsOpen] = useState(false);
-
-
-    console.log(sizeScreen);
-
-
+    console.log("render Navbar");
 
     useEffect(() => {
         if (savedproduct.length > 0) {
-            setInCard(true)
+            if (card == false) {
+                setInCard(true)
+            }
         } else {
-            setInCard(false)
+            if (card == true) {
+                setInCard(false)
+            }
+
         }
     }, [savedproduct])
+
 
 
     return (
@@ -47,7 +49,7 @@ const Navbar = () => {
                                         <Link to={"/WarenKorp"} style={{ textDecoration: "none" }}><img className={navCss.img} src={card ? shoping_cart : empty_shoping_card} /></Link>
                                     </li>
                                     <li>
-                                        <Link to={"Profile"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>About</h1></Link>
+                                        <Link to={"Favority"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>Favority</h1></Link>
                                     </li>
                                 </ul>
                             </div>
@@ -70,7 +72,7 @@ const Navbar = () => {
                                         <Link to={"/WarenKorp"} style={{ textDecoration: "none" }}><img className={navCss.img} src={card ? shoping_cart : empty_shoping_card} /></Link>
                                     </li>
                                     <li>
-                                        <Link to={"Profile"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>About</h1></Link>
+                                        <Link to={"Favority"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>Favority</h1></Link>
                                     </li>
                                 </ul>
                             </div>
@@ -92,4 +94,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default memo(Navbar);
