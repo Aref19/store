@@ -9,14 +9,17 @@ import { ProductType, SORT_BY_NAME, SORT_BY_PRICE } from "../../context/productC
 import Popup from "../Popup";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 import { add, fetchProducts } from "../../redux_toolkit/slices";
-
+import useAuth from "../../hooks/useAuthHook";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 
 
 const Productf = () => {
-
-   // const [loading] = useFetchProduct();
+    const { token } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    // const [loading] = useFetchProduct();
     const product = useAppSelector((state) => state.product)
     const dispatchred = useAppDispatch();
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -123,8 +126,16 @@ const Productf = () => {
                                     <>
                                         <div className={productCss.card}>
                                             <Card id={item.id} images={item.image} title={item.title} buttonTitle="Add" price={item.price} addProduct={() => {
-                                                addProductTOCorb(item)
-                                                setShowpopup(true)
+                                                if (token != "") {
+                                                    addProductTOCorb(item)
+                                                    setShowpopup(true)
+                                                } else {
+                                                    navigate("/LogIn", {
+                                                        replace: true,
+                                                        state: { from: location }
+                                                    });
+                                                }
+
                                             }} />
                                         </div>
                                     </>

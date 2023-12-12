@@ -57,8 +57,9 @@ const LogIn = () => {
                         }
                     )
                     setAuth(data.data.token);
+                    console.log("location" + from);
                     navigate(from, { replace: true })
-                    console.log("location" + location.state);
+                   
 
 
                 } catch (err) {

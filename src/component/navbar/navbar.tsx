@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import useIsAboveMediaScreen from "../../hooks/useIsAboveMediaScreen"
 import iconList from '../../assets/list.png'
 import navbarCss from '../../css/sidebar.module.css'
+import useAuth from "../../hooks/useAuthHook"
 
 const Navbar = () => {
     const [card, setInCard] = useState<boolean>(false);
@@ -17,6 +18,7 @@ const Navbar = () => {
     const { sizeScreen } = useIsAboveMediaScreen()
     const [openNavbar, setIsOpen] = useState(false);
     console.log("render Navbar");
+    const { token, setAuth } = useAuth();
 
     useEffect(() => {
         if (savedproduct.length > 0) {
@@ -77,9 +79,14 @@ const Navbar = () => {
                                     <li>
                                         <Link to={"Favority"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>Favority</h1></Link>
                                     </li>
-                                    <li>
-                                        <Link to={"LogIn"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>LogIn</h1></Link>
-                                    </li>
+                                    {
+                                        token == "" ? <li>
+                                            <Link to={"LogIn"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>LogIn</h1></Link>
+                                        </li> : <li>
+                                            <Link to={""} style={{ textDecoration: "none" }}><h1 className={navCss.h1} onClick={() => setAuth("")}>Logout</h1></Link>
+                                        </li>
+                                    }
+
                                 </ul>
                             </div>
                         </div>
