@@ -6,6 +6,8 @@ import MainShoppingCar from './component/shoppingCart/mainShoppingCart';
 import Navbar from './component/navbar/navbar';
 import { useState } from 'react';
 import Favority from './component/Favority';
+import Layout from './component/main/Layout';
+import LogIn from "./component/LogIn"
 
 
 function App() {
@@ -24,8 +26,16 @@ function App() {
       {/* <SideBar setIsOpen={changeStatusOfSidebar} isOpen={navbarstatus} /> */}
       <Routes>
         <Route path="/" element={<Productf />} />
-        <Route path="/WarenKorp" element={<MainShoppingCar />} />
-        <Route path="/Favority" element={<Favority />} />
+        <Route path="/LogIn" element={<LogIn />} />
+        {/* protect element */}
+        <Route path='/' element={
+        
+        <Layout />
+        
+        }>
+          <Route path="/WarenKorp" element={<MainShoppingCar />} />
+          <Route path="/Favority" element={<Favority />} />
+        </Route>
       </Routes>
     </>
 

@@ -51,6 +51,9 @@ const Navbar = () => {
                                     <li>
                                         <Link to={"Favority"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>Favority</h1></Link>
                                     </li>
+                                    <li>
+                                        <Link to={"LogIn"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>LogIn</h1></Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -73,6 +76,9 @@ const Navbar = () => {
                                     </li>
                                     <li>
                                         <Link to={"Favority"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>Favority</h1></Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"LogIn"} style={{ textDecoration: "none" }}><h1 className={navCss.h1}>LogIn</h1></Link>
                                     </li>
                                 </ul>
                             </div>

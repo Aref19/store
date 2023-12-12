@@ -16,9 +16,9 @@ const MainShoppingCar = () => {
 
     useEffect(() => {
         const removeDialog = setTimeout(() => {
-            setShowpopup(true)
-        }, 2000)
-            
+            setShowpopup(false)
+        }, 2000);
+
         return () => {
             clearTimeout(removeDialog)
         }
@@ -28,14 +28,12 @@ const MainShoppingCar = () => {
         <div className={navbarstatus ? `${productCss.container}` : `${productCss.containernavBar}`}>
 
             <div className={productCss.main_content}>
-
+                <Popup text="Removed" show={showPopup} />
                 {
                     savedproduct.map((item) => {
-                        console.log(item);
-
                         return (
                             <>
-                                <Popup text="Removed" show={showPopup} />
+
                                 <div className={productCss.card}>
                                     <Card id={item.id} images={item.image} title={item.title} buttonTitle="Remove" price={item.price} addProduct={() => {
                                         setShowpopup(true);

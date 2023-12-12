@@ -9,13 +9,9 @@ let state: Product[] = []
 
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-
     const response = await instAxio.get("/products")
-
     return response.data;
-
 })
-
 
 export const producktSlice = createSlice({
     name: "products",
@@ -45,13 +41,8 @@ export const cartSlice = createSlice({
         }
     }
 
-})
+});
+
 export const { addToCard, deleteFromCard } = cartSlice.actions
-
-
 export const { add } = producktSlice.actions
 export default producktSlice.reducer
-
-
-
-

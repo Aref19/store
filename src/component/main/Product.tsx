@@ -16,7 +16,7 @@ import { add, fetchProducts } from "../../redux_toolkit/slices";
 
 const Productf = () => {
 
-    const [loading] = useFetchProduct();
+   // const [loading] = useFetchProduct();
     const product = useAppSelector((state) => state.product)
     const dispatchred = useAppDispatch();
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -109,7 +109,7 @@ const Productf = () => {
 
                 </div>
             </div>
-            {loading ?
+            {filteredProducts.length > 0 ?
 
                 <div className={productCss.container}>
 
